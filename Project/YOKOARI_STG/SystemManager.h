@@ -4,11 +4,10 @@
 class SystemManager {
 
 private:
-	SystemManager();
-	~SystemManager();
+
 
 	void Initialize();
-	void Update();
+	
 	void Render() {};
 	void Finalize();
 
@@ -16,7 +15,11 @@ private:
 	bool IsGameEnd();
 
 	bool gameEndFlag;
-	 
+
+public:
+	SystemManager();
+	~SystemManager();
+	void Update();
 };
 
 #endif // !_SYSTEMMANAGER_H_
