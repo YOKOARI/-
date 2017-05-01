@@ -17,7 +17,7 @@ void Title::Init() {
 
 void Title::Update(){
 	if (CheckHitKey(KEY_INPUT_SPACE) != 0) {
-		mChangeScene->ChangeScene(eScene_Menu);
+		mChangeScene->ChangeScene(eScene_Scene_Menu);
 		DebugManager::Instance()->RenderError(DebugManager::RenderErrorType::SucsseceLord);
 	}
 }

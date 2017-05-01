@@ -24,10 +24,11 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="ISceneChanger.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="SceneMenu.cpp" />
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SceneTask.cpp" />
+    <ClCompile Include="SelectCharaMenu.cpp" />
     <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="Title.cpp" />
   </ItemGroup>
@@ -37,10 +38,11 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="IScene.h" />
     <ClInclude Include="ISceneChanger.h" />
-    <ClInclude Include="Menu.h" />
+    <ClInclude Include="SceneMenu.h" />
     <ClInclude Include="Result.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SceneTask.h" />
+    <ClInclude Include="SelectCharaMenu.h" />
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="Title.h" />
   </ItemGroup>

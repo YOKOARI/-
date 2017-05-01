@@ -2,15 +2,16 @@
 
 typedef enum eScene {
 
-	eScene_Menu,
+	eScene_Scene_Menu,
 	eScene_Title,
 	eScene_Game,
 	eScene_Grow,
 	eScene_Config,
 	eScene_Result,
+	eScene_CharSelectMenu,
 	eScene_NULL,
 
-}eScene;
+} eScene;
 
 class ISceneChanger {	
 
