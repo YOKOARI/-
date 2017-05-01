@@ -1,0 +1,26 @@
+﻿  AirObject.cpp
+  BlockObject.cpp
+  CharacterObject.cpp
+  Config.cpp
+  CrossBlock.cpp
+  DebugManager.cpp
+  Game.cpp
+  ISceneChanger.cpp
+  Main.cpp
+  Map.cpp
+  MapUI.cpp
+  Menu.cpp
+  ObjectTask.cpp
+  Result.cpp
+  SceneManager.cpp
+  SceneTask.cpp
+  SystemManager.cpp
+  Title.cpp
+  TitleLogo.cpp
+  コード生成しています。
+c:\users\nwuser.da\desktop\cafe\game_α2.0\mr.driller\characterobject.cpp(156): warning C4715: 'CharacterObject::Action': 値を返さないコントロール パスがあります。
+  157 of 158 functions (99.4%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  コード生成が終了しました。
+  Mr.Driller.vcxproj -> C:\Users\nwuser.DA\Desktop\Cafe\Game_α2.0\Release\Mr.Driller.exe
