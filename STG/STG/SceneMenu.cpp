@@ -5,9 +5,15 @@ SceneMenu::SceneMenu(ISceneChanger* changer) :SceneTask(changer) {
 }
 
 
-SceneMenu::~SceneMenu()
-{
+SceneMenu::~SceneMenu() {
 }
+
+/****************************************************
+*　初期化処理
+*　　ここに画像のロードや、変数の初期化を行います。
+*
+*
+****************************************************/
 void SceneMenu::Init() {
 	
 }
@@ -15,10 +21,9 @@ void SceneMenu::Init() {
 //更新
 void SceneMenu::Update() {
 
-	if (CheckHitKey(KEY_INPUT_G) != 0) {
-			DebugManager::Instance()->RenderError(DebugManager::RenderErrorType::Game);
-			mChangeScene->ChangeScene(eScene_CharSelectMenu);//シーンをゲーム画面に変更
-			
+	if (CheckHitKey(KEY_INPUT_M) != 0) {
+		DebugManager::Instance()->RenderError(DebugManager::RenderErrorType::SucsseceLord);
+		mChangeScene->ChangeScene(eScene_CharSelectMenu);//シーンをゲーム画面に変更
 	}
 	if (CheckHitKey(KEY_INPUT_C) != 0) {
 		DebugManager::Instance()->RenderError(DebugManager::RenderErrorType::Config);
@@ -37,7 +42,7 @@ void SceneMenu::Update() {
 //描画
 void SceneMenu::Render() {
 	SceneTask::Render();//親クラスの描画メソッドを呼ぶ
-	DrawString(0, 0, "Menu", GetColor(255, 255, 255));
+	DrawString(0, 0, "SceneMenu", GetColor(255, 255, 255));
 }
 
 void SceneMenu::Final() {
