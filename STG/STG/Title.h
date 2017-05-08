@@ -12,8 +12,9 @@ private:
 	int selectImageTy;  //選択アイコンの先端ｙ座標
 	int fontSizeStart;  //フォントサイズ
 	int fontSizeEnd;
-	int whiteColor; 
-	int blueColor; 
+	int BlackColor; 
+	int blueColor;
+	int imgBack;  //背景画像
 
 	void TitleSelect();
 

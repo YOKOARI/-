@@ -12,9 +12,13 @@ Title::~Title()
 {
 }
 void Title::Init() {
+
+	//背景画像の取得
+	imgBack = LoadGraph("Image/Title.png");
+
 	//色の取得
-	int whiteColor = GetColor(255, 255, 255); //文字色(白)
-	int blueColor = GetColor(0, 0, 255); //アイコン色(青)
+	BlackColor = GetColor(0, 0, 0); //文字色(黒)
+	blueColor = GetColor(0, 0, 255); //アイコン色(青)
 }
 
 void Title::Update(){
@@ -30,38 +34,8 @@ void Title::Update(){
 	if (CheckHitKey(KEY_INPUT_DOWN) != 0) {
 		selectFlag = false;
 	}
-}
 
-void Title::Render() {
-	//DrawString(0, 0, "Title", GetColor(255, 255, 255));
-
-	TitleSelect();
-
-	SceneTask::Render();
-	
-}
-void Title::Final() {
-	SceneTask::Final();
-}
-
-/***************************************************************
-*関数名 : TitleSelect()
-*製作者 :鈴木 正太
-*概要 : ゲームスタートと終了を表示し、キーボードで選択させる。
-*引数 : なし
-*戻り値 : なし
-*備考 : なし
-****************************************************************/
-void Title::TitleSelect() {
-
-	
-
-	SetFontSize(fontSizeStart);  //文字サイズ変更
-	DrawString(550, 320, "ゲームスタート！", whiteColor);
-
-	SetFontSize(fontSizeEnd);
-	DrawString(550, 380, "ゲーム終了！", whiteColor);
-
+	//選択されている文字のフォントサイズを変える
 	if (selectFlag == true) {
 		selectImageY = 320;
 		selectImageTy = 335;
@@ -76,7 +50,40 @@ void Title::TitleSelect() {
 		fontSizeStart = 24;
 		fontSizeEnd = 30;
 	}
-	DrawTriangle(500, selectImageY, 500, selectImageY+30, 530, selectImageTy, blueColor, TRUE);
+}
+
+void Title::Render() {
+	//DrawString(0, 0, "Title", GetColor(255, 255, 255));
+
+	DrawGraph(0, 0, imgBack, false);
+
+	SetFontSize(fontSizeStart);  //文字サイズ変更
+	DrawString(550, 320, "ゲームスタート！", BlackColor);
+
+	SetFontSize(fontSizeEnd);
+	DrawString(550, 380, "ゲーム終了！", BlackColor);
+
+	DrawTriangle(500, selectImageY, 500, selectImageY + 30, 530, selectImageTy, blueColor, TRUE);
+
+	TitleSelect();
+
+
+	SceneTask::Render();
+	
+}
+void Title::Final() {
+	SceneTask::Final();
+}
+
+/***************************************************************
+*関数名 : TitleSelect()
+*製作者 :鈴木 正太
+*概要 : ゲームスタートとゲーム終了をＺキーで決定
+*引数 : なし
+*戻り値 : なし
+*備考 : なし
+****************************************************************/
+void Title::TitleSelect() {
 
 	//Zキーで決定
 	if (CheckHitKey(KEY_INPUT_Z) != 0) {
