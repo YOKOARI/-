@@ -30,6 +30,6 @@ void Result::Render() {
 void Result::Update() {
 
 	if (CheckHitKey(KEY_INPUT_SPACE) != 0) {
-		mChangeScene->ChangeScene(eScene_Menu);
+		mChangeScene->ChangeScene(eScene_Scene_Menu);
 	}
 }

@@ -17,7 +17,7 @@ void Game::Init() {
 }
 void Game::Update() {
 	if (CheckHitKey(KEY_INPUT_P) == 1) {
-		mChangeScene->ChangeScene(eScene_Menu);
+		mChangeScene->ChangeScene(eScene_Scene_Menu);
 	}
 
 

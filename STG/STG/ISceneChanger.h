@@ -17,7 +17,7 @@ class ISceneChanger {
 
 public:	
 	ISceneChanger() {};
-	virtual ~ISceneChanger() = 0;
+	virtual ~ISceneChanger() = default;
 	virtual void ChangeScene(eScene NextScene) = 0;
 	
 };
