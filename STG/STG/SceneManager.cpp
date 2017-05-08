@@ -3,13 +3,14 @@
 #include "Config.h"
 #include "Game.h"
 #include "Title.h"
-#include "Menu.h"
+#include "SceneMenu.h"
+#include "SelectCharaMenu.h"
 #include "DebugManager.h"
 
 SceneManager::SceneManager() :mNextScene(eScene_NULL) {
 
 	mScene = (IScene*) new Title(this);
-	DebugManager::Instance()->RenderError(DebugManager::RenderErrorType::Title);
+	//DebugManager::Instance()->RenderError(DebugManager::RenderErrorType::Title);
 }
 
 void SceneManager::Init() {
@@ -31,8 +32,12 @@ void SceneManager::Update() {
 		delete mScene;
 
 		switch (mNextScene) {
-		case eScene_Menu:
-			mScene = (IScene*) new Menu(this);
+		case eScene_Scene_Menu:
+			mScene = (IScene*) new SceneMenu(this);
+			break;
+
+		case eScene_CharSelectMenu:
+			mScene = (IScene*) new SelectCharaMenu(this);
 			break;
 
 		case eScene_Game:
