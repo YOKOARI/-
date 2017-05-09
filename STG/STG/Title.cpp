@@ -2,6 +2,9 @@
 #include "DxLib.h"
 #include "DebugManager.h"
 
+#define TITLE_IMAGE LoadGraph("Image/Title.png") 
+#define NOMAL_FONT_SIZE 40
+#define BIG_FONT_SIZE 52
 
 Title::Title(ISceneChanger* changer):SceneTask(changer){
 
@@ -13,12 +16,20 @@ Title::~Title()
 }
 void Title::Init() {
 
+	selectFlag = true;
+
 	//背景画像の取得
-	imgBack = LoadGraph("Image/Title.png");
+	imgBack = TITLE_IMAGE;
 
 	//色の取得
 	BlackColor = GetColor(0, 0, 0); //文字色(黒)
 	blueColor = GetColor(0, 0, 255); //アイコン色(青)
+
+	//フォントの取得
+	ChangeFont("ニコモジ＋");
+	fontSizeStart = BIG_FONT_SIZE;
+	fontSizeEnd = NOMAL_FONT_SIZE;
+	
 }
 
 void Title::Update(){
@@ -35,20 +46,33 @@ void Title::Update(){
 		selectFlag = false;
 	}
 
-	//選択されている文字のフォントサイズを変える
+	//矢印アイコンの座標値を変え,フォントサイズも変える
 	if (selectFlag == true) {
-		selectImageY = 320;
-		selectImageTy = 335;
+		selectImageY = 322;
+		selectImageTy = 342;
 
-		fontSizeStart = 30;
-		fontSizeEnd = 24;
+		fontSizeStart = BIG_FONT_SIZE;
+		fontSizeEnd = NOMAL_FONT_SIZE;
 	}
 	else {
-		selectImageY = 380;
-		selectImageTy = 395;
+		selectImageY = 405;
+		selectImageTy = 425;
 
-		fontSizeStart = 24;
-		fontSizeEnd = 30;
+		fontSizeStart = NOMAL_FONT_SIZE;
+		fontSizeEnd = BIG_FONT_SIZE;
+	}
+
+	//Enterキーで決定
+	if (CheckHitKey(KEY_INPUT_RETURN) != 0) {
+
+		//ゲーム開始
+		if (selectFlag == true) {
+			mChangeScene->ChangeScene(eScene_CharSelectMenu);
+		}
+		//ゲーム終了
+		else {
+			DxLib_End();
+		}
 	}
 }
 
@@ -57,15 +81,13 @@ void Title::Render() {
 
 	DrawGraph(0, 0, imgBack, false);
 
-	SetFontSize(fontSizeStart);  //文字サイズ変更
+	SetFontSize(fontSizeStart);
 	DrawString(550, 320, "ゲームスタート！", BlackColor);
 
 	SetFontSize(fontSizeEnd);
-	DrawString(550, 380, "ゲーム終了！", BlackColor);
+	DrawString(550, 400, "ゲーム終了！", BlackColor);
 
-	DrawTriangle(500, selectImageY, 500, selectImageY + 30, 530, selectImageTy, blueColor, TRUE);
-
-	TitleSelect();
+	DrawTriangle(500, selectImageY, 500, selectImageY + 40, 540, selectImageTy, blueColor, TRUE);
 
 
 	SceneTask::Render();
@@ -73,27 +95,4 @@ void Title::Render() {
 }
 void Title::Final() {
 	SceneTask::Final();
-}
-
-/***************************************************************
-*関数名 : TitleSelect()
-*製作者 :鈴木 正太
-*概要 : ゲームスタートとゲーム終了をＺキーで決定
-*引数 : なし
-*戻り値 : なし
-*備考 : なし
-****************************************************************/
-void Title::TitleSelect() {
-
-	//Zキーで決定
-	if (CheckHitKey(KEY_INPUT_Z) != 0) {
-		//ゲーム開始
-		if (selectFlag == true) {
-
-		}
-		//ゲーム終了
-		else {
-			DxLib_End();
-		}
-	}
 }

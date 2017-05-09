@@ -7,16 +7,15 @@
 
 class Title:public SceneTask{
 private:
-	bool selectFlag = true;  //ゲーム開始か終了の判定フラグ
-	int selectImageY;  //選択アイコンのｙ座標
-	int selectImageTy;  //選択アイコンの先端ｙ座標
-	int fontSizeStart;  //フォントサイズ
-	int fontSizeEnd;
-	int BlackColor; 
-	int blueColor;
-	int imgBack;  //背景画像
+	bool selectFlag;     //ゲーム開始か終了の判定フラグ
+	int selectImageY;    //選択アイコンのｙ座標
+	int selectImageTy;   //選択アイコンの先端ｙ座標
+	int fontSizeStart;   //フォントサイズ
+	int fontSizeEnd;     //フォントサイズ
+	int BlackColor;      //フォント色(黒)
+	int blueColor;       //矢印アイコン色(青)
+	int imgBack;         //背景画像
 
-	void TitleSelect();
 
 public:
 	
