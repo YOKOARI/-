@@ -11,9 +11,10 @@ Title::Title(ISceneChanger* changer):SceneTask(changer){
 }
 
 
-Title::~Title()
-{
+Title::~Title(){
+
 }
+
 void Title::Init() {
 
 	selectFlag = true;
