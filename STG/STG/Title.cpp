@@ -85,14 +85,17 @@ void Title::Update(){
 void Title::Render() {
 	//DrawString(0, 0, "Title", GetColor(255, 255, 255));
 
+	//背景の描画
 	DrawGraph(0, 0, imgBack, false);
 
+	//テキストの描画
 	SetFontSize(fontSizeStart);
 	DrawString(550, 320, "ゲームスタート！", BlackColor);
 
 	SetFontSize(fontSizeEnd);
 	DrawString(550, 400, "ゲーム終了！", BlackColor);
 
+	//選択アイコンの描画
 	DrawTriangle(500, selectImageY, 500, selectImageY + 40, 540, selectImageTy, blueColor, TRUE);
 
 
