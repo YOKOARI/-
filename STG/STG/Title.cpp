@@ -2,9 +2,9 @@
 #include "DxLib.h"
 #include "DebugManager.h"
 
-#define TITLE_IMAGE LoadGraph("Image/Title.png") 
-#define NOMAL_FONT_SIZE 40
-#define BIG_FONT_SIZE 52
+#define TITLE_IMAGE LoadGraph("Image/Title.png") //背景画像の読み込み
+#define NOMAL_FONT_SIZE 40  //選択されているときのフォントサイズ
+#define BIG_FONT_SIZE 52    //選択されてないいときのフォントサイズ
 
 Title::Title(ISceneChanger* changer):SceneTask(changer){
 
@@ -17,6 +17,7 @@ Title::~Title(){
 
 void Title::Init() {
 
+	//ゲーム開始・終了フラグの初期化
 	selectFlag = true;
 
 	//背景画像の取得
@@ -41,9 +42,13 @@ void Title::Update(){
 
 	//上下キーで選択状況の変更
 	if (CheckHitKey(KEY_INPUT_UP) != 0) {
+
+		//ゲームスタート！状態
 		selectFlag = true;
 	}
 	if (CheckHitKey(KEY_INPUT_DOWN) != 0) {
+
+		//ゲーム終了！状態
 		selectFlag = false;
 	}
 
