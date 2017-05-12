@@ -24,7 +24,7 @@ void Title::Init() {
 	imgBack = TITLE_IMAGE;
 
 	//色の取得
-	BlackColor = GetColor(0, 0, 0); //文字色(黒)
+	blackColor = GetColor(0, 0, 0); //文字色(黒)
 	blueColor = GetColor(0, 0, 255); //アイコン色(青)
 
 	//フォントの取得
@@ -90,10 +90,10 @@ void Title::Render() {
 
 	//テキストの描画
 	SetFontSize(fontSizeStart);
-	DrawString(550, 320, "ゲームスタート！", BlackColor);
+	DrawString(550, 320, "ゲームスタート！", blackColor);
 
 	SetFontSize(fontSizeEnd);
-	DrawString(550, 400, "ゲーム終了！", BlackColor);
+	DrawString(550, 400, "ゲーム終了！", blackColor);
 
 	//選択アイコンの描画
 	DrawTriangle(500, selectImageY, 500, selectImageY + 40, 540, selectImageTy, blueColor, TRUE);
