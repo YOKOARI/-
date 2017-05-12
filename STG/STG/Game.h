@@ -4,11 +4,12 @@
 #include"SceneTask.h"
 #include"ISceneChanger.h"
 #include "Result.h"
+#include "CharacterManager.h"
 
 
 class Game :public SceneTask {
 public:
-
+	
 
 	Game(ISceneChanger* changer);
 	~Game();
@@ -18,7 +19,7 @@ private:
 	virtual void Render() override;
 	virtual void Final() override;
 	int gHandle;
-	
+	CharacterManager charaMgr;
 };
 
 #endif

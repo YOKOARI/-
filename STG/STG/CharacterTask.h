@@ -1,23 +1,32 @@
 #pragma once
-#include "IObj.h"
+#include "ICharacter.h"
 
-class CharacterTask :public IObj {
+class CharacterTask :public ICharacter {
 
 public:
 	CharacterTask();
 	~CharacterTask();
 protected:
-	int mCharaGraphicHandle[5];
+	int mCharaGraphicHandle[5]; 
 	int mSoundHandle;
 	int mSoundPlayFlag;
 
-	virtual void Init() override;
+	int x;
+	int y;
+	int width;
+	int height;
+	int center;
+
+	virtual void Initialize() override;
 	virtual void Update() override;
 	virtual void Render() override;
-	virtual void Final() override;
+	virtual void Finalize() override;
 	virtual void Move();
+	//virtual void Shot();
 
-	bool ShotFlag;
+	//virtual void RectAngle();
+
+	//bool ShotFlag;
 
 };
 

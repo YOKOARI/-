@@ -11,10 +11,10 @@ Enemy::~Enemy()
 }
 
 
-void Enemy::Init() {
+void Enemy::Initialize() {
 
 
-	CharacterTask::Init();
+	CharacterTask::Initialize();
 	//mCharaGraphicHandle[0] = LoadGraph();
 }
 
@@ -27,7 +27,7 @@ void Enemy::Render() {
 
 }
 
-void Enemy::Final() {
+void Enemy::Finalize() {
 
-	CharacterTask::Final();
+	CharacterTask::Finalize();
 }

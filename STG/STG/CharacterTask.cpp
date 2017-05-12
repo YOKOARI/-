@@ -9,7 +9,7 @@ CharacterTask::CharacterTask() {
 CharacterTask::~CharacterTask() {
 }
 
-void CharacterTask::Init() {
+void CharacterTask::Initialize() {
 	mCharaGraphicHandle[0] = 0;
 	mCharaGraphicHandle[1] = 0;
 	mCharaGraphicHandle[2] = 0;
@@ -35,7 +35,7 @@ void CharacterTask::Render() {
 
 }
 
-void CharacterTask::Final() {
+void CharacterTask::Finalize() {
 	for (int i = 0; i < 5; i++) {
 		DeleteGraph(mCharaGraphicHandle[i]);
 	}

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Enemy.h"
-class BossEnemy :public Enemy {
+#include "CharacterTask.h"
+class BossEnemy :public CharacterTask {
 public:
 	BossEnemy();
 	~BossEnemy();
