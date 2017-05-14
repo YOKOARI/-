@@ -1,9 +1,10 @@
 #include "Player.h"
 #include "DxLib.h"
-
+#include "PlayerBullet.h"
 #define PLAYER_PIC "Image/sample.png"
 
 Player::Player() {
+
 }
 
 
@@ -11,6 +12,7 @@ Player::~Player() {
 }
 
 void Player::Initialize() {
+	mBullet[0] = (IBullet*) new PlayerBullet;
 	x = 0;
 	y = 0;
 	mCharaGraphicHandle[0] =  LoadGraph(PLAYER_PIC);
@@ -61,7 +63,12 @@ void Player::MoveScript(int transfer) {
 	if (y >= 720) y = 715;
 
 }
-/*
-void Player::Shot() {
 
-}*/
+void Player::ShotUpdate() {
+	mBullet[0]->Update();
+	
+}
+void Player::ShotRender() {
+	mBullet[0]->Render();
+
+}

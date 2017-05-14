@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CharacterTask.h"
+#include "IBullet.h"
 
 class Player : public CharacterTask {
 public:
@@ -15,6 +16,8 @@ public:
 
 private:
 	void MoveScript(int);
-	//virtual void Shot() override;
+	IBullet* mBullet[10];
+	virtual void ShotUpdate() override;
+	virtual void ShotRender() override;
 };
 

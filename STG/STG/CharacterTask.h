@@ -22,7 +22,8 @@ protected:
 	virtual void Render() override;
 	virtual void Finalize() override;
 	virtual void Move();
-	//virtual void Shot();
+	virtual void ShotUpdate();
+	virtual void ShotRender();
 
 	//virtual void RectAngle();
 
