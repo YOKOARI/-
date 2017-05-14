@@ -11,7 +11,7 @@ private:
 	int selectImageY;    //選択アイコンのｙ座標
 	int selectImageTy;   //選択アイコンの先端ｙ座標
 	int blueColor;       //選択アイコン色(青)
-	int BlackColor;      //フォント色(黒)
+	int blackColor;      //フォント色(黒)
 	int fontSizeStart;   //「ゲームスタート！」のフォントサイズ
 	int fontSizeEnd;     //「ゲーム終了！」のフォントサイズ	
 	int imgBack;         //背景画像
