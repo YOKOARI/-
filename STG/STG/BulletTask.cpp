@@ -1,6 +1,6 @@
 #include "BulletTask.h"
 #include "DxLib.h"
-
+#include "ControlGameInstance.h"
 
 BulletTask::BulletTask() {
 

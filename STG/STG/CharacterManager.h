@@ -13,11 +13,12 @@ public:
 	~CharacterManager();
 	virtual void Initialize() override;
 	virtual void Update() override;
+	virtual void Update(int, int) override {};
 	virtual void Render() override;
 	virtual void Finalize() override;
 
 private:
-	ICharacter *iCharacter;
+	ICharacter *iCharacter[3];
 	int charaSelectId;
 	//int GetCharaId(int charaId);
 

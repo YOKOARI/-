@@ -2,6 +2,7 @@
 #include "DxLib.h"
 #include "PlayerBullet.h"
 #include "ControlGameInstance.h"
+
 #define PLAYER_PIC "Image/sample.png"
 
 
@@ -11,13 +12,12 @@ YokoariBrue::YokoariBrue() {
 
 
 YokoariBrue::~YokoariBrue() {
+
 }
 
 void YokoariBrue::Initialize() {
-	interval = 0;
+	CharacterTask::Initialize();
 	i = 0;
-	x = 0;
-	y = 0;
 	for (int k = 0; k < 70; k++) {
 		mBullet[k] = NULL;
 	}
@@ -26,44 +26,17 @@ void YokoariBrue::Initialize() {
 }
 
 void YokoariBrue::Update() {
-	Move();
 	ControlGameInstance::GetInstance()->SetPlayerPointX(this->x);
 	ControlGameInstance::GetInstance()->SetPlayerPointY(this->y);
-	
-	for (int j = 0; j < 70; j++) {
-		if (mBullet[j] != 0) {
-			mBullet[j]->Update();
-		}
-	}
-	
-	if (CheckHitKey(KEY_INPUT_SPACE) != 0) {
-		mBullet[i] = (IBullet*) new PlayerBullet;
-		mBullet[i]->Initialize();
-		if (mBullet[i]->GetBulletPointY() <= 0) {
-			mBullet[i]->Finalize();
-			delete mBullet[i];
-			mBullet[i] = NULL;
-		}
-		
-		i++;
-		if (i == 70) i = 0;
-		
-	}
-	
+	Move();
+	ShotUpdate();
+	CharacterTask::Update();
 }
 
 void YokoariBrue::Render() {
 	
-	for (int j = 0; j < 70; j++) {
-		if (mBullet[j] != 0) {
-			mBullet[j]->Render();
-		}
-	}
-	/*
-	if (mBullet[0] != 0) {
-		mBullet[0]->Render();
-	}
-	*/
+	ShotRender();
+	
 	DrawExtendGraph(x, y, x + 10, y + 15, mCharaGraphicHandle[0], TRUE);
 }
 
@@ -104,10 +77,40 @@ void YokoariBrue::MoveScript(int transfer) {
 }
 
 void YokoariBrue::ShotUpdate() {
-	mBullet[0]->Update();
+
+	for (int j = 0; j < 70; j++) {
+		if (mBullet[j] != 0) {
+			mBullet[j]->Update();
+		}
+	}
+
+	cntBulletTime++;
+
+	ShotFlg = cntBulletTime > interval ? true : false;
+
+	if (CheckHitKey(KEY_INPUT_SPACE) != 0 && ShotFlg == true) {
+
+		mBullet[i] = (IBullet*) new PlayerBullet;
+		mBullet[i]->Initialize();
+
+		if (mBullet[i]->GetBulletPointY() <= 0) {
+			mBullet[i]->Finalize();
+			delete mBullet[i];
+			mBullet[i] = NULL;
+		}
+
+		i++;
+		if (i == 70) i = 0;
+		cntBulletTime = 0;
+	}
 
 }
-void YokoariBrue::ShotRender() {
-	mBullet[0]->Render();
 
+void YokoariBrue::ShotRender() {
+
+	for (int j = 0; j < 70; j++) {
+		if (mBullet[j] != 0) {
+			mBullet[j]->Render();
+		}
+	}
 }

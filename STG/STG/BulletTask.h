@@ -12,7 +12,7 @@ public:
 	virtual void Finalize() override;
 	virtual int GetBulletPointX() override;
 	virtual int GetBulletPointY() override;
-	//int bulletGraphicHandle[25];
+	int bulletGraphicHandle[25];
 
 	int x;
 	int y;

@@ -1,6 +1,6 @@
 #include "CharacterTask.h"
 #include "DxLib.h"
-
+#include "ControlGameInstance.h"
 
 CharacterTask::CharacterTask() {
 }
@@ -15,14 +15,17 @@ void CharacterTask::Initialize() {
 	mCharaGraphicHandle[2] = 0;
 	mCharaGraphicHandle[3] = 0;
 	mCharaGraphicHandle[4] = 0;
-
 	mSoundHandle = 0;
-
 	mSoundPlayFlag = 0;
+	cntBulletTime = 0;
+	interval = 3;
+	x = 0;
+	y = 0;
 }
 
 void CharacterTask::Update() {
-
+	ControlGameInstance::GetInstance()->SetPlayerPointX(this->x);
+	ControlGameInstance::GetInstance()->SetPlayerPointY(this->y);
 }
 
 void CharacterTask::Render() {

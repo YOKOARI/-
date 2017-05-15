@@ -1,20 +1,15 @@
 #pragma once
 #include "BulletTask.h"
+class NewbeiEnemyBullet : public BulletTask {
 
-
-class PlayerBullet : public BulletTask {
 public:
-	PlayerBullet();
-	~PlayerBullet();
+	NewbeiEnemyBullet();
+	~NewbeiEnemyBullet();
 
 	virtual void Initialize() override;
 	virtual void Update() override;
 	virtual void Render() override;
 	virtual void Finalize() override;
-	
-private:
-	int gHandle[9];
-	int shotVectorFlg;
 	
 };
 

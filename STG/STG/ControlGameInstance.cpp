@@ -24,6 +24,15 @@ void ControlGameInstance::SetPlayerPointY(int PointY) {
 	playerPointY = PointY;
 }
 
+void ControlGameInstance::SetNewbeiEnemyPointX(int PointX) {
+	NewbeiEnemyPointX = PointX;
+}
+
+void ControlGameInstance::SetNewbeiEnemyPointY(int PointY) {
+	NewbeiEnemyPointY = PointY;
+}
+
+
 void ControlGameInstance::SetCharacterId(int charaId) {
 	 characterId = charaId;
 }
@@ -38,6 +47,14 @@ int ControlGameInstance::GetPlayerPointX() {
 
 int ControlGameInstance::GetPlayerPointY() {
 	return playerPointY;
+}
+
+int ControlGameInstance::GetNewbeiEnemyPointX() {
+	return NewbeiEnemyPointX;
+}
+
+int ControlGameInstance::GetNewbeiEnemyPointY() {
+	return NewbeiEnemyPointY;
 }
 
 int ControlGameInstance::GetCharacterId() {

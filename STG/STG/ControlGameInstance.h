@@ -15,11 +15,16 @@ public:
 	static ControlGameInstance* GetInstance();
 	void SetPlayerPointX(int PointX);
 	void SetPlayerPointY(int PointY);
+	void SetNewbeiEnemyPointX(int PointX);
+	void SetNewbeiEnemyPointY(int PointY);
 	void SetCharacterId(int charaId);
 	void SetStageId(int stageId);
+	
 
 	int GetPlayerPointX();
 	int GetPlayerPointY();
+	int GetNewbeiEnemyPointX();
+	int GetNewbeiEnemyPointY();
 	int GetCharacterId();
 	int GetStageId();
 private:
@@ -28,6 +33,9 @@ private:
 	int StageSelectId;		//ステージのID
 	int playerPointX;
 	int playerPointY;
+	int NewbeiEnemyPointX;
+	int NewbeiEnemyPointY;
+
 
 	
 };

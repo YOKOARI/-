@@ -17,10 +17,13 @@ protected:
 	int height;
 	int center;
 	int interval;
+	int cntBulletTime;
+	bool ShotFlg;
 
 	virtual void Initialize() override;
 	virtual void Update() override;
 	virtual void Render() override;
+	virtual void Update(int, int) override {};
 	virtual void Finalize() override;
 	virtual void Move();
 	virtual void ShotUpdate();
