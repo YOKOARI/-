@@ -7,7 +7,8 @@ typedef enum eScene {
 	eScene_Game,
 	eScene_Grow,
 	eScene_Config,
-	eScene_Result,
+	eScene_GameClear,
+	eScene_GameOver,
 	eScene_CharSelectMenu,
 	eScene_NULL,
 

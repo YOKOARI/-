@@ -1,36 +1,38 @@
-#include "Player.h"
+#include "YokoariRed.h"
 #include "DxLib.h"
-
+#include "PlayerBullet.h"
 #define PLAYER_PIC "Image/sample.png"
 
-Player::Player() {
+YokoariRed::YokoariRed() {
+
 }
 
 
-Player::~Player() {
+YokoariRed::~YokoariRed() {
 }
 
-void Player::Initialize() {
+void YokoariRed::Initialize() {
+	mBullet[0] = (IBullet*) new PlayerBullet;
 	x = 0;
 	y = 0;
-	mCharaGraphicHandle[0] =  LoadGraph(PLAYER_PIC);
+	mCharaGraphicHandle[0] = LoadGraph(PLAYER_PIC);
 
 }
 
-void Player::Update() {
+void YokoariRed::Update() {
 	Move();
 }
 
-void Player::Render() {
+void YokoariRed::Render() {
 
-	DrawExtendGraph(x, y,x + 10, y + 15, mCharaGraphicHandle[0], TRUE);
+	DrawExtendGraph(x, y, x + 10, y + 15, mCharaGraphicHandle[0], TRUE);
 }
 
-void Player::Finalize() {
+void YokoariRed::Finalize() {
 	DeleteGraph(mCharaGraphicHandle[0]);
 }
 
-void Player::Move() {
+void YokoariRed::Move() {
 
 	//シフトキーが押されている場合は遅くする
 	if (CheckHitKey(KEY_INPUT_RSHIFT) != 0 || CheckHitKey(KEY_INPUT_LSHIFT) != 0) {
@@ -42,7 +44,7 @@ void Player::Move() {
 
 }
 
-void Player::MoveScript(int transfer) {
+void YokoariRed::MoveScript(int transfer) {
 	if (CheckHitKey(KEY_INPUT_UP) != 0) {
 		y -= transfer;
 	}
@@ -61,7 +63,12 @@ void Player::MoveScript(int transfer) {
 	if (y >= 720) y = 715;
 
 }
-/*
-void Player::Shot() {
 
-}*/
+void YokoariRed::ShotUpdate() {
+	mBullet[0]->Update();
+
+}
+void YokoariRed::ShotRender() {
+	mBullet[0]->Render();
+
+}

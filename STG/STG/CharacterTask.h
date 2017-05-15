@@ -16,13 +16,15 @@ protected:
 	int width;
 	int height;
 	int center;
+	int interval;
 
 	virtual void Initialize() override;
 	virtual void Update() override;
 	virtual void Render() override;
 	virtual void Finalize() override;
 	virtual void Move();
-	//virtual void Shot();
+	virtual void ShotUpdate();
+	virtual void ShotRender();
 
 	//virtual void RectAngle();
 

@@ -1,8 +1,10 @@
 #pragma once
 #include "ICharacter.h"
-#include "Player.h"
+#include "YokoariBrue.h"
+#include "YokoariRed.h"
 #include "BossEnemy.h"
 #include "NewbeiEnemy.h"
+
 
 
 class CharacterManager : public ICharacter {
@@ -16,6 +18,8 @@ public:
 
 private:
 	ICharacter *iCharacter;
+	int charaSelectId;
+	//int GetCharaId(int charaId);
 
 };
 

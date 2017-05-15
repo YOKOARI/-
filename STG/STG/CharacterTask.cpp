@@ -46,3 +46,11 @@ void CharacterTask::Finalize() {
 void CharacterTask::Move() {
 	
 }
+
+void CharacterTask::ShotUpdate() {
+
+}
+
+void CharacterTask::ShotRender() {
+
+}

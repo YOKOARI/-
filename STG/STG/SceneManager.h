@@ -11,9 +11,6 @@ private:
 	IScene* mScene;
 	eScene mNextScene;
 
-	DWORD dwExCode;
-	HANDLE hTh;
-
 	
 	int gHandle;
 
