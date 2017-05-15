@@ -16,6 +16,7 @@ protected:
 	int width;
 	int height;
 	int center;
+	int interval;
 
 	virtual void Initialize() override;
 	virtual void Update() override;

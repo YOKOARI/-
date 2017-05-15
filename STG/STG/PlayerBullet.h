@@ -1,6 +1,7 @@
 #pragma once
 #include "BulletTask.h"
 
+
 class PlayerBullet : public BulletTask {
 public:
 	PlayerBullet();
@@ -10,5 +11,9 @@ public:
 	virtual void Update() override;
 	virtual void Render() override;
 	virtual void Finalize() override;
+private:
+	int gHandle[9];
+	
+	
 };
 

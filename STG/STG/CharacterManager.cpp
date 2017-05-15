@@ -1,14 +1,15 @@
 #include "CharacterManager.h"
-
+#include "ControlGameInstance.h"
 
 
 CharacterManager::CharacterManager(){
-	iCharacter = (ICharacter*) new Player;
+	//iCharacter = ControlGameInstance::GetInstance()->GetCharacterId() == e_YokoariBrue ? (ICharacter*) new YokoariBrue : (ICharacter*) new YokoariRed;
+	iCharacter = (ICharacter*) new YokoariBrue;
 }
 
 
-CharacterManager::~CharacterManager()
-{
+CharacterManager::~CharacterManager() {
+	delete iCharacter;
 }
 
 void CharacterManager::Initialize() {
@@ -25,4 +26,6 @@ void CharacterManager::Render() {
 
 void CharacterManager::Finalize() {
 	iCharacter->Finalize();
+
 }
+

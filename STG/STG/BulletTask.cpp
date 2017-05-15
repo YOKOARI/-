@@ -26,3 +26,11 @@ void BulletTask::Render() {
 void BulletTask::Finalize() {
 
 }
+
+int BulletTask::GetBulletPointX() {
+	return x;
+}
+
+int BulletTask::GetBulletPointY() {
+	return y;
+}

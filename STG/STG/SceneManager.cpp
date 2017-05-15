@@ -52,7 +52,7 @@ void SceneManager::Update() {
 			mScene = (IScene*) new Title(this);
 			break;
 
-		case eScene_Result:
+		case eScene_GameClear:
 			mScene = (IScene*) new Result(this);
 			break;
 		}
