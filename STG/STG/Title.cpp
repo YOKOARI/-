@@ -104,4 +104,7 @@ void Title::Render() {
 }
 void Title::Final() {
 	SceneTask::Final();
+
+	//‰æ‘œ‚Ì”jŠü
+	InitGraph();
 }

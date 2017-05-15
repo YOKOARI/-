@@ -2,6 +2,7 @@
 #include "DxLib.h"
 #include "ISceneChanger.h"
 #include "SceneTask.h"
+#include "ControlGameInstance.h"
 
 #define CHARASELECT_IMAGE LoadGraph("Image/SelectBack.png")      //背景画像の読み込み
 #define CHARAINFO_IMAGE LoadGraph("Image/CharaInfo.png")         //キャラ情報画像の読み込み
@@ -13,6 +14,7 @@
 #define RED_X  810    //ヨコアリ君(赤)のｘ座標
 #define YOKOARI_Y 250 //ヨコアリ君(両方)のｙ座標
 
+#define DECISION_SE LoadSoundMem("Sound/CharaDecision.mp3")
 
 
 SelectCharaMenu::SelectCharaMenu(ISceneChanger* changer) :SceneTask(changer) {
@@ -41,15 +43,14 @@ void SelectCharaMenu::Init() {
 	//色の取得
 	blueColor = GetColor(0, 0, 255); //アイコン色(青)
 
+	//音の取得
+	mSoundPlayHandle = DECISION_SE;
+
 } 
 
 void SelectCharaMenu::Update() {
 	SceneTask::Update();
-	/*if (CheckHitKey(KEY_INPUT_G) != 0) {
-
-		mChangeScene->ChangeScene(eScene_Game);
-	}*/
-
+	
 	//左右キーでキャラクター選択
 	if (CheckHitKey(KEY_INPUT_LEFT) != 0) {
 
@@ -75,6 +76,8 @@ void SelectCharaMenu::Update() {
 			flgBlue = 1;
 
 			//ゲーム画面へ
+			PlaySoundMem(mSoundPlayHandle, DX_PLAYTYPE_BACK, FALSE);  //効果音再生
+			ControlGameInstance::GetInstance()->SetCharacterId(e_YokoariBrue); //キャラのＩＤを渡す
 			mChangeScene->ChangeScene(eScene_Game);
 		}
 	}
@@ -90,6 +93,7 @@ void SelectCharaMenu::Update() {
 			flgRed = 1;
 
 			//ゲーム画面へ
+			ControlGameInstance::GetInstance()->SetCharacterId(e_YokoariRed);
 			mChangeScene->ChangeScene(eScene_Game);
 		}
 	}
@@ -113,4 +117,7 @@ void SelectCharaMenu::Render() {
 
 void SelectCharaMenu::Final() {
 	SceneTask::Final();
+
+	//画像の破棄
+	InitGraph();
 }
