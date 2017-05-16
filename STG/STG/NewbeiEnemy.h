@@ -1,18 +1,22 @@
 #pragma once
 #include "IBullet.h"
 #include "CharacterTask.h"
+
 class NewbeiEnemy : public CharacterTask {
 public:
-	NewbeiEnemy(int);
+	NewbeiEnemy(int ,int);
 	~NewbeiEnemy();
-	void Initialize() override;
-	void Update() override {};
-	void Update(int, int) override;
-	void Render() override;
-	void Finalize() override;
+	virtual void Initialize() override;
+	virtual void Update() override;
+	virtual void Move();
+	virtual void Render() override;
+	virtual void Finalize() override;
 
 private:
-	int spwonPlaceFlag;
+	
+	bool endShotFlag;
+	int moveX;
+	int moveY;
 	void ShotUpdate();
 	void ShotRender();
 	IBullet* mBullet;

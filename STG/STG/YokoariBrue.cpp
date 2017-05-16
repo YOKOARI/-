@@ -70,9 +70,9 @@ void YokoariBrue::MoveScript(int transfer) {
 		x += transfer;
 	}
 	if (x <= 0) x = 0;
-	if (x >= 1280) x = 1275;
-	if (y <= 0) y = 0;
-	if (y >= 720) y = 715;
+	if (x >= 1260) x = 1260;
+	if (y <= 15) y = 15;
+	if (y >= 715) y = 715;
 
 }
 

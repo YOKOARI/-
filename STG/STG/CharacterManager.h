@@ -13,7 +13,6 @@ public:
 	~CharacterManager();
 	virtual void Initialize() override;
 	virtual void Update() override;
-	virtual void Update(int, int) override {};
 	virtual void Render() override;
 	virtual void Finalize() override;
 

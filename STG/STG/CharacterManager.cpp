@@ -5,7 +5,7 @@
 CharacterManager::CharacterManager(){
 	//iCharacter = ControlGameInstance::GetInstance()->GetCharacterId() == e_YokoariBrue ? (ICharacter*) new YokoariBrue : (ICharacter*) new YokoariRed;
 	iCharacter[0] = (ICharacter*) new YokoariBrue;
-	iCharacter[1] = (ICharacter*) new NewbeiEnemy(1);
+	iCharacter[1] = (ICharacter*) new NewbeiEnemy(50,100);
 }
 
 
