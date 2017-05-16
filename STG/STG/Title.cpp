@@ -6,6 +6,10 @@
 #define NOMAL_FONT_SIZE 40  //選択されているときのフォントサイズ
 #define BIG_FONT_SIZE 52    //選択されてないいときのフォントサイズ
 
+#define SELECT_SE LoadSoundMem("Sound/cursor1.mp3")
+#define START_SE LoadSoundMem("Sound/GameStart.mp3")
+#define END_SE LoadSoundMem("Sound/GameEnd.mp3")
+
 Title::Title(ISceneChanger* changer):SceneTask(changer){
 
 }
@@ -43,10 +47,16 @@ void Title::Update(){
 	//上下キーで選択状況の変更
 	if (CheckHitKey(KEY_INPUT_UP) != 0) {
 
+		//効果音再生
+		PlaySoundMem(SELECT_SE, DX_PLAYTYPE_BACK, FALSE);  
+
 		//ゲームスタート！状態
 		selectFlag = true;
 	}
 	if (CheckHitKey(KEY_INPUT_DOWN) != 0) {
+
+		//効果音再生
+		PlaySoundMem(SELECT_SE, DX_PLAYTYPE_BACK, FALSE);
 
 		//ゲーム終了！状態
 		selectFlag = false;
@@ -73,10 +83,18 @@ void Title::Update(){
 
 		//ゲーム開始
 		if (selectFlag == true) {
+
+			//効果音再生
+			PlaySoundMem(START_SE, DX_PLAYTYPE_BACK, FALSE);
+
 			mChangeScene->ChangeScene(eScene_CharSelectMenu);
 		}
 		//ゲーム終了
 		else {
+
+			//効果音再生
+			PlaySoundMem(END_SE, DX_PLAYTYPE_BACK, FALSE);
+
 			DxLib_End();
 		}
 	}
@@ -107,4 +125,6 @@ void Title::Final() {
 
 	//画像の破棄
 	InitGraph();
+
+	//InitSoundMem();
 }
