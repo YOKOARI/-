@@ -14,6 +14,7 @@
 #define RED_X  810    //ヨコアリ君(赤)のｘ座標
 #define YOKOARI_Y 250 //ヨコアリ君(両方)のｙ座標
 
+#define SELECT_SE LoadSoundMem("Sound/cursor1.mp3")
 #define DECISION_SE LoadSoundMem("Sound/CharaDecision.mp3")
 
 
@@ -43,9 +44,6 @@ void SelectCharaMenu::Init() {
 	//色の取得
 	blueColor = GetColor(0, 0, 255); //アイコン色(青)
 
-	//音の取得
-	mSoundPlayHandle = DECISION_SE;
-
 } 
 
 void SelectCharaMenu::Update() {
@@ -54,10 +52,16 @@ void SelectCharaMenu::Update() {
 	//左右キーでキャラクター選択
 	if (CheckHitKey(KEY_INPUT_LEFT) != 0) {
 
+		//効果音再生
+		PlaySoundMem(SELECT_SE, DX_PLAYTYPE_BACK, FALSE);
+
 		//青ヨコアリ君選択状態
 		charaSelect = true;
 	}
 	if (CheckHitKey(KEY_INPUT_RIGHT) != 0) {
+
+		//効果音再生
+		PlaySoundMem(SELECT_SE, DX_PLAYTYPE_BACK, FALSE);
 
 		//赤ヨコアリ君選択状態
 		charaSelect = false;
@@ -76,7 +80,7 @@ void SelectCharaMenu::Update() {
 			flgBlue = 1;
 
 			//ゲーム画面へ
-			PlaySoundMem(mSoundPlayHandle, DX_PLAYTYPE_BACK, FALSE);  //効果音再生
+			PlaySoundMem(DECISION_SE, DX_PLAYTYPE_BACK, FALSE);  //効果音再生
 			ControlGameInstance::GetInstance()->SetCharacterId(e_YokoariBrue); //キャラのＩＤを渡す
 			mChangeScene->ChangeScene(eScene_Game);
 		}
@@ -93,6 +97,7 @@ void SelectCharaMenu::Update() {
 			flgRed = 1;
 
 			//ゲーム画面へ
+			PlaySoundMem(DECISION_SE, DX_PLAYTYPE_BACK, FALSE);  //効果音再生
 			ControlGameInstance::GetInstance()->SetCharacterId(e_YokoariRed);
 			mChangeScene->ChangeScene(eScene_Game);
 		}
@@ -120,4 +125,6 @@ void SelectCharaMenu::Final() {
 
 	//画像の破棄
 	InitGraph();
+
+	//InitSoundMem();
 }
