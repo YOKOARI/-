@@ -26,6 +26,8 @@ void CharacterTask::Initialize() {
 void CharacterTask::Update() {
 	ControlGameInstance::GetInstance()->SetPlayerPointX(this->x);
 	ControlGameInstance::GetInstance()->SetPlayerPointY(this->y);
+	ControlGameInstance::GetInstance()->SetPlayerHitAria(x + 20, y + 30, 5);
+
 }
 
 void CharacterTask::Render() {

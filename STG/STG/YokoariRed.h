@@ -16,7 +16,7 @@ public:
 
 private:
 	void MoveScript(int);
-	IBullet* mBullet[10];
+	IBullet* mBullet[70];
 	virtual void ShotUpdate() override;
 	virtual void ShotRender() override;
 	int i;

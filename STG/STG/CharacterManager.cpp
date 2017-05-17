@@ -1,37 +1,50 @@
 #include "CharacterManager.h"
 #include "ControlGameInstance.h"
-
+#include <stdlib.h>
 
 CharacterManager::CharacterManager(){
-	//iCharacter = ControlGameInstance::GetInstance()->GetCharacterId() == e_YokoariBrue ? (ICharacter*) new YokoariBrue : (ICharacter*) new YokoariRed;
-	iCharacter[0] = (ICharacter*) new YokoariBrue;
-	iCharacter[1] = (ICharacter*) new NewbeiEnemy(50,100);
+	iCharacter[0] = ControlGameInstance::GetInstance()->GetCharacterId() == e_YokoariBrue ? (ICharacter*) new YokoariBrue : (ICharacter*) new YokoariRed;
+	//iCharacter[1] = new NormalEnemy(100);
+	for (int i = 1; i < 12; i++) {
+		iCharacter[i] = 0;
+		if (iCharacter[i] == 0) {
+			iCharacter[i] = (ICharacter*) new NormalEnemy(rand() % 300 + 60);
+		}
+	}
+	
 }
 
 
 CharacterManager::~CharacterManager() {
-	delete iCharacter[0];
-	delete iCharacter[1];
+	for (int i = 0; i < 12; i++) {
+		delete iCharacter[i];
+	}
 }
 
 void CharacterManager::Initialize() {
-	iCharacter[0]->Initialize();
-	iCharacter[1]->Initialize();
+	for (int i = 0; i < 12; i++) {
+		iCharacter[i]->Initialize();
+	}
 }
 
-
 void CharacterManager::Update() {
-	iCharacter[0]->Update();
-	iCharacter[1]->Update();
+	for (int i = 0; i < 12; i++) {
+		iCharacter[i]->Update();
+	}
+
 }
 
 void CharacterManager::Render() {
-	iCharacter[0]->Render();
-	iCharacter[1]->Render();
+	for (int i = 0; i < 12; i++) {
+		iCharacter[i]->Render();
+	}
+
 }
 
 void CharacterManager::Finalize() {
-	iCharacter[0]->Finalize();
-	iCharacter[1]->Finalize();
+	for (int i = 0; i < 12; i++) {
+		iCharacter[i]->Finalize();
+	}
+
 }
 

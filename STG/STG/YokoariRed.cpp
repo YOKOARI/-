@@ -2,7 +2,9 @@
 #include "DxLib.h"
 #include "PlayerBullet.h"
 #include "ControlGameInstance.h"
+
 #define PLAYER_PIC "Image/sample.png"
+
 
 YokoariRed::YokoariRed() {
 
@@ -10,6 +12,7 @@ YokoariRed::YokoariRed() {
 
 
 YokoariRed::~YokoariRed() {
+
 }
 
 void YokoariRed::Initialize() {
@@ -19,7 +22,6 @@ void YokoariRed::Initialize() {
 		mBullet[k] = NULL;
 	}
 	mCharaGraphicHandle[0] = LoadGraph(PLAYER_PIC);
-
 
 }
 
@@ -68,9 +70,9 @@ void YokoariRed::MoveScript(int transfer) {
 		x += transfer;
 	}
 	if (x <= 0) x = 0;
-	if (x >= 1280) x = 1275;
-	if (y <= 0) y = 0;
-	if (y >= 720) y = 715;
+	if (x >= 1260) x = 1260;
+	if (y <= 15) y = 15;
+	if (y >= 715) y = 715;
 
 }
 
@@ -89,33 +91,26 @@ void YokoariRed::ShotUpdate() {
 	if (CheckHitKey(KEY_INPUT_SPACE) != 0 && ShotFlg == true) {
 
 		mBullet[i] = (IBullet*) new PlayerBullet;
-		mBullet[i + 1] = (IBullet*) new PlayerBullet;
 		mBullet[i]->Initialize();
-		mBullet[i + 1]->Initialize();
 
 		if (mBullet[i]->GetBulletPointY() <= 0) {
 			mBullet[i]->Finalize();
 			delete mBullet[i];
 			mBullet[i] = NULL;
 		}
-		if (mBullet[i + 1]->GetBulletPointY() <= 0) {
-			mBullet[i + 1]->Finalize();
-			delete mBullet[i + 1];
-			mBullet[i + 1] = NULL;
-		}
 
-		i += 2;
+		i++;
 		if (i == 70) i = 0;
 		cntBulletTime = 0;
 	}
 
-
 }
+
 void YokoariRed::ShotRender() {
+
 	for (int j = 0; j < 70; j++) {
 		if (mBullet[j] != 0) {
 			mBullet[j]->Render();
 		}
 	}
-
 }

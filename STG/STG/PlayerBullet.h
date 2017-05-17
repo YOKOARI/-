@@ -15,6 +15,6 @@ public:
 private:
 	int gHandle[9];
 	int shotVectorFlg;
-	
+
 };
 

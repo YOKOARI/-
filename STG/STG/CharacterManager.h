@@ -2,8 +2,9 @@
 #include "ICharacter.h"
 #include "YokoariBrue.h"
 #include "YokoariRed.h"
-#include "BossEnemy.h"
+//#include "FirstBossEnemy.h"
 #include "NewbeiEnemy.h"
+#include "NormalEnemy.h"
 
 
 
@@ -17,9 +18,9 @@ public:
 	virtual void Finalize() override;
 
 private:
-	ICharacter *iCharacter[3];
+	ICharacter *iCharacter[12];
 	int charaSelectId;
-	//int GetCharaId(int charaId);
+	
 
 };
 

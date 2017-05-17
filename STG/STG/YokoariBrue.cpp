@@ -3,7 +3,7 @@
 #include "PlayerBullet.h"
 #include "ControlGameInstance.h"
 
-#define PLAYER_PIC "Image/sample.png"
+#define PLAYER_PIC "Image/PlayerUI/YokoariBlue.png"
 
 
 YokoariBrue::YokoariBrue() {
@@ -37,7 +37,7 @@ void YokoariBrue::Render() {
 	
 	ShotRender();
 	
-	DrawExtendGraph(x, y, x + 10, y + 15, mCharaGraphicHandle[0], TRUE);
+	DrawExtendGraph(x, y, x + 40, y + 60, mCharaGraphicHandle[0], TRUE);
 }
 
 void YokoariBrue::Finalize() {
@@ -81,6 +81,7 @@ void YokoariBrue::ShotUpdate() {
 	for (int j = 0; j < 70; j++) {
 		if (mBullet[j] != 0) {
 			mBullet[j]->Update();
+		
 		}
 	}
 

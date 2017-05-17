@@ -2,7 +2,7 @@
 #include "DxLib.h"
 #include "ControlGameInstance.h"
 
-#define ENEMY_BULLET_PIC "Image/BulletBox.png"
+#define ENEMY_BULLET_PIC "Image/BulletBox2.png"
 
 NewbeiEnemyBullet::NewbeiEnemyBullet() {
 
@@ -13,12 +13,14 @@ NewbeiEnemyBullet::~NewbeiEnemyBullet() {
 }
 
 void NewbeiEnemyBullet::Initialize() {
-	LoadDivGraph(ENEMY_BULLET_PIC, 25, 5, 5, 20, 20, bulletGraphicHandle);
+	LoadDivGraph(ENEMY_BULLET_PIC, 16, 4, 4, 20.5f, 20.5f, bulletGraphicHandle);
 	for (i = 0; i < 5; i++) {
 		PointX[i] = ControlGameInstance::GetInstance()->GetNewbeiEnemyPointX();
 		PointY[i] = ControlGameInstance::GetInstance()->GetNewbeiEnemyPointY();
 	}
+	ControlGameInstance::GetInstance()->SetEnemyBulletHitAria(10, 10, 6);
 }
+
 
 void NewbeiEnemyBullet::Update() {
 	for (i = 0; i < 5; i++) {
@@ -38,6 +40,15 @@ void NewbeiEnemyBullet::Finalize() {
 }
 
 int NewbeiEnemyBullet::GetBulletPointY() {
-	if (PointY[0] > 1280 && PointY[1] > 1280 && PointY[2] > 1280 && PointY[3] > 1280 && PointY[4] > 1280) return -1;
+	for (int j = 0; j < 5; j++) {
+
+		if (PointY[i] > 800) {
+			if (i == 5) return -1;
+			continue;
+		}
+		else {
+			break;
+		}
+	}
 }
 int NewbeiEnemyBullet::GetBulletPointX() { return 0; }

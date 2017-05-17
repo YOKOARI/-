@@ -19,6 +19,7 @@ protected:
 	int interval;
 	int cntBulletTime;
 	bool ShotFlg;
+	int hp;
 
 	virtual void Initialize() override;
 	virtual void Update() override;

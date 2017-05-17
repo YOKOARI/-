@@ -2,7 +2,7 @@
 #include "DxLib.h"
 #include "ControlGameInstance.h"
 
-#define BULLET_PIC "Image/BulletBox.png"
+#define BULLET_PIC "Image/BulletBox3.png"
 
 PlayerBullet::PlayerBullet()
 {
@@ -15,9 +15,9 @@ PlayerBullet::~PlayerBullet()
 
 void PlayerBullet::Initialize() {
 	shotVectorFlg = 0;
-	LoadDivGraph(BULLET_PIC, 9, 3, 3, 20, 20, gHandle);
-	x = ControlGameInstance::GetInstance()->GetPlayerPointX();
-	y = ControlGameInstance::GetInstance()->GetPlayerPointY();
+  	LoadDivGraph(BULLET_PIC, 9, 3, 3, 11.3f, 11.3f, gHandle);
+	x = ControlGameInstance::GetInstance()->GetPlayerPointX() + 15;
+	y = ControlGameInstance::GetInstance()->GetPlayerPointY() + 10;
 
 }
 
@@ -33,9 +33,14 @@ void PlayerBullet::Update() {
 		}
 		else {
 			y -= 10;
-			x += 2;
+			x -= 2;
 			shotVectorFlg = 0;
 		}
+	}
+	ControlGameInstance::GetInstance()->SetPlayerBulletHitAria(x + 5, y + 5, 5);
+	if (ControlGameInstance::GetInstance()->PlayerBulletToEnemyHitTest() == true) {
+		DrawString(0, 0, "hitP", GetColor(255, 255, 255));
+
 	}
 }
 
