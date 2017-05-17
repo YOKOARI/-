@@ -95,6 +95,8 @@ void Title::Update(){
 			//Œø‰Ê‰¹Ä¶
 			PlaySoundMem(END_SE, DX_PLAYTYPE_BACK, FALSE);
 
+			WaitTimer(300);
+
 			DxLib_End();
 		}
 	}
@@ -126,5 +128,9 @@ void Title::Final() {
 	//‰æ‘œ‚Ì”jŠü
 	InitGraph();
 
+	//‰¹Šy‚Ì”jŠü
 	//InitSoundMem();
+	DeleteSoundMem(SELECT_SE);
+	DeleteSoundMem(START_SE);
+	DeleteSoundMem(END_SE);
 }

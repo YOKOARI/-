@@ -126,5 +126,8 @@ void SelectCharaMenu::Final() {
 	//‰æ‘œ‚Ì”jŠü
 	InitGraph();
 
+	//‰¹Šy‚Ì”jŠü
 	//InitSoundMem();
+	DeleteSoundMem(SELECT_SE);
+	DeleteSoundMem(DECISION_SE);
 }
