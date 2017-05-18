@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 
-#define SPOWN_X rand() % (24 + 1) * 10
+//#define SPOWN_X rand() % (24 + 1) * 10
 #define SPOWN_Y -20
 #define MOVING_POINT_Y 2
 #define NORMAL_ENEMY_PIC "Image/EnemyUI/enemy‚Q.png"
@@ -14,6 +14,7 @@ NormalEnemy::NormalEnemy(int id, int y) {
 	moveY = y;
 	endShotFlag = false;
 	thisId = id;
+	hitCount = 0;
 }
 
 
@@ -23,7 +24,7 @@ NormalEnemy::~NormalEnemy() {
 void NormalEnemy::Initialize() {
 	mBullet = NULL;
 	i = 0;
-	x = SPOWN_X;
+	x = rand() % (45 + 1) * 10;
 	y = SPOWN_Y;
 	mCharaGraphicHandle[0] = LoadGraph(NORMAL_ENEMY_PIC);
 }
@@ -37,8 +38,9 @@ void NormalEnemy::Update() {
 	for (int j = 0; j < 70; j++) {
 		if (ControlGameInstance::GetInstance()->PlayerBulletToEnemyHitTest(j) == true) {
 			DrawString(0, 0, "hitP", GetColor(255, 255, 255));
-			//hitTest.SetEnemyNumber(thisId);
-			//ControlGameInstance::GetInstance()->SetEnemyHitFlag(thisId , j, true);
+			hitCount++;
+			if(hitCount == 3)
+				ControlGameInstance::GetInstance()->SetEnemyDeadFlag(thisId, true);
 		}
 		else {
 			//ControlGameInstance::GetInstance()->SetEnemyHitFlag(thisId, j, false);
@@ -53,7 +55,8 @@ void NormalEnemy::Render() {
 }
 
 void NormalEnemy::Finalize() {
-	InitGraph();
+	x = 3000;
+	y = 3000;
 }
 
 void NormalEnemy::Move() {
@@ -66,7 +69,7 @@ void NormalEnemy::Move() {
 		y -= 4;
 	}
 	
-	if (y == moveY && endShotFlag == false) {
+	if (y == moveY && endShotFlag == false && ControlGameInstance::GetInstance()->GetEnemyDeadFlag(thisId) == false) {
 		ShotFlg = true;
 		endShotFlag = true;
 	}

@@ -1,7 +1,7 @@
 #pragma once
 #include "IBullet.h"
 #include "CharacterTask.h"
-#include "HitTest.h"
+
 
 class NormalEnemy : public CharacterTask {
 public:
@@ -20,8 +20,9 @@ private:
 	int moveY;
 	int i;
 	int thisId;
+	int hitCount;
 	IBullet* mBullet;
-	HitTest hitTest;
+	
 	void ShotUpdate();
 	void ShotRender();
 	

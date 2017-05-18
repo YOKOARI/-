@@ -9,7 +9,7 @@ public:
 	virtual int Update() override;
 	virtual int Render() override;
 	virtual int Finalize() override;
-	virtual int SpownEnemy() override;
+	
 private:
 };
 

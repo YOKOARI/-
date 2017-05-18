@@ -1,11 +1,12 @@
 #pragma once
-#include "IBullet.h"
-#include "CharacterTask.h"
 
-class NewbeiEnemy : public CharacterTask {
+#include "CharacterTask.h"
+#include "IBullet.h"
+class BossEnemy :public CharacterTask {
 public:
-	NewbeiEnemy(int, int, int);
-	~NewbeiEnemy();
+	BossEnemy(int id);
+	~BossEnemy();
+
 	virtual void Initialize() override;
 	virtual void Update() override;
 	virtual void Move() override;
@@ -13,15 +14,21 @@ public:
 	virtual void Finalize() override;
 
 private:
-	
 	bool endShotFlag;
 	int moveX;
 	int moveY;
 	int i;
+	int hp;
+	bool bulletFlag;
+	int bulletFlagCount;
+
 	int thisId;
 	int hitCount;
+	IBullet* mBullet[20];
 	void ShotUpdate();
 	void ShotRender();
-	IBullet* mBullet;
+	int moveFlag;
+	int cnt;
+	int bulletCnt;
 };
 

@@ -71,6 +71,14 @@ void ControlGameInstance::SetCurrentBulletNumber(int number) {
 	currentNumber = number;
 }
 
+void ControlGameInstance::SetEnemyDeadFlag(int EnemyID, bool deadFlag) {
+	enemyDradFlag[EnemyID] = deadFlag;
+}
+
+void ControlGameInstance::SetPlayerDeadFlag(bool deadFlag) {
+	playerDeadFlag = deadFlag;
+}
+
 //’e‚ª“–‚½‚Á‚½“G‚ÌID‚ðŠi”[
 void ControlGameInstance::SetEnemyHitFlag(int playerBulletId,bool flag) {
 	enemyHitFlag[playerBulletId] = flag;
@@ -100,8 +108,6 @@ int ControlGameInstance::GetNewbeiEnemyPointY() {
 	return NewbeiEnemyPointY;
 }
 
-
-
 int ControlGameInstance::GetCharacterId() {
 	return characterId;
 }
@@ -110,13 +116,25 @@ int ControlGameInstance::GetStageId() {
 	return StageSelectId;
 }
 
+bool ControlGameInstance::GetEnemyDeadFlag(int EnemyID) {
+	bool deadFlag = enemyDradFlag[EnemyID];
+	enemyDradFlag[EnemyID] = false;
+	return deadFlag;
+}
+
+bool ControlGameInstance::GetPlayerDeadFlag() {
+	bool deadFlag = playerDeadFlag;
+	playerDeadFlag = false;
+	return deadFlag;
+}
+
 bool ControlGameInstance::GetPlayerHitFlag() {
 	return playerHitFlag;
 }
 
 //’e‚ª“–‚½‚Á‚½“G‚ÌID‚ðŽæ“¾
 bool ControlGameInstance::GetEnemyHitFlag(int playerBulletNumber) {
-	int flg = enemyHitFlag[playerBulletNumber];
+	bool flg = enemyHitFlag[playerBulletNumber];
 	enemyHitFlag[playerBulletNumber] = false;
 	return flg;
 }
@@ -147,8 +165,7 @@ bool ControlGameInstance::PlayerBulletToEnemyHitTest(int playerBulletID) {
 		return true;
 	}
 	else {
-		SetEnemyHitFlag(playerBulletID,false);
+		//SetEnemyHitFlag(playerBulletID,false);
 		return	false;
 	}
 }
-

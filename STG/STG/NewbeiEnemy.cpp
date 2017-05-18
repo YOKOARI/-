@@ -15,11 +15,13 @@
 #define MOVING_POINT_X 2
 
 
-NewbeiEnemy::NewbeiEnemy(int x,int y) {
+NewbeiEnemy::NewbeiEnemy(int x,int y, int id) {
 	
 	moveX = x;
 	moveY = y;
 	endShotFlag = false;
+	thisId = id;
+	hitCount = 0;
 }
 
 
@@ -31,7 +33,7 @@ void NewbeiEnemy::Initialize() {
 	mBullet = NULL;
 	i = 0;
 	y = SPOWN_Y;
-	x = SPOWN_X;
+	x = rand() % (45 + 1) * 10;
 	mCharaGraphicHandle[0] = LoadGraph(ENEMY_PIC);
 }
 
@@ -39,9 +41,19 @@ void NewbeiEnemy::Update() {
 	Move();
 	ControlGameInstance::GetInstance()->SetNewbeiEnemyPointX(this->x);
 	ControlGameInstance::GetInstance()->SetNewbeiEnemyPointY(this->y);
-	ShotUpdate();;
+	ShotUpdate();
 	ControlGameInstance::GetInstance()->SetEnemyHitAria(x + 15, y + 23, 15);
-
+	for (int j = 0; j < 70; j++) {
+		if (ControlGameInstance::GetInstance()->PlayerBulletToEnemyHitTest(j) == true) {
+			DrawString(0, 0, "hitP", GetColor(255, 255, 255));
+			hitCount++;
+			if (hitCount == 3)
+				ControlGameInstance::GetInstance()->SetEnemyDeadFlag(thisId, true);
+		}
+		else {
+			//ControlGameInstance::GetInstance()->SetEnemyHitFlag(thisId, j, false);
+		}
+	}
 }
 
 void NewbeiEnemy::Render() {
@@ -50,7 +62,8 @@ void NewbeiEnemy::Render() {
 }
 
 void NewbeiEnemy::Finalize() {
-	InitGraph();
+	x = 3000;
+	y = 3000;
 }
 
 void NewbeiEnemy::Move() {
@@ -81,8 +94,7 @@ void NewbeiEnemy::ShotUpdate() {
 	
 	if(ShotFlg == true) {
 
-		//mBullet = new NewbeiEnemyBullet;
-		mBullet = new SilentSerena;
+		mBullet = new NewbeiEnemyBullet;
 		mBullet->Initialize();
 		
 		if (mBullet->GetBulletPointY() == -1) {

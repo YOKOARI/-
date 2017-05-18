@@ -30,7 +30,6 @@ protected:
 	virtual void Move();
 	virtual void ShotUpdate();
 	virtual void ShotRender();
-
 	//virtual void RectAngle();
 
 	//bool ShotFlag;

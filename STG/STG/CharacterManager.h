@@ -2,7 +2,7 @@
 #include "ICharacter.h"
 #include "YokoariBrue.h"
 #include "YokoariRed.h"
-//#include "FirstBossEnemy.h"
+#include "BossEnemy.h"
 #include "NewbeiEnemy.h"
 #include "NormalEnemy.h"
 

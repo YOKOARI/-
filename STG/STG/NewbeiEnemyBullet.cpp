@@ -26,6 +26,14 @@ void NewbeiEnemyBullet::Update() {
 	for (i = 0; i < 5; i++) {
 		PointY[i] += 5;
 		PointX[i] += (i - 2) * 2;
+
+		ControlGameInstance::GetInstance()->SetEnemyBulletHitAria(PointX[i] + 10, PointY[i] + 10, 6);
+		if (ControlGameInstance::GetInstance()->EnemyBulletToPlayerHitTest() == true) {
+			PointX[i] = -3000;
+			PointY[i] = -3000;
+			DrawString(0, 0, "hit", GetColor(255, 255, 255));
+			ControlGameInstance::GetInstance()->SetPlayerDeadFlag(true);
+		}
 	}
 }
 
@@ -33,6 +41,7 @@ void NewbeiEnemyBullet::Render() {
 	for (i = 0; i < 5; i++) {
 		DrawGraph(PointX[i], PointY[i], bulletGraphicHandle[4], TRUE);
 	}
+
 }
 
 void NewbeiEnemyBullet::Finalize() {

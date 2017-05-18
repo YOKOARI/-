@@ -23,10 +23,11 @@ public:
 	void SetPlayerBulletId(int bulletId);
 	void SetEnemyHitAria(int cx, int cy, int cr);
 	void SetPlayerHitAria(int cx, int cy, int cr);
-	void SetEnemyBulletHitAria(int id, int cx, int cy, int cr);
+	void SetEnemyBulletHitAria(int cx, int cy, int cr);
 	void SetPlayerBulletHitAria(int id, int cx, int cy, int cr);
 	void SetCurrentBulletNumber(int);
-
+	void SetEnemyDeadFlag(int enemyNumber,bool deadFlag);
+	void SetPlayerDeadFlag(bool deadFlag);
 	void SetEnemyHitFlag(int,bool);
 
 	int GetPlayerPointX();
@@ -37,7 +38,8 @@ public:
 	int GetStageId();
 	int GetBulletId();
 	int GetCurrentBulletNumber();
-
+	bool GetEnemyDeadFlag(int EnemyID);
+	bool GetPlayerDeadFlag();
 
 	bool GetPlayerHitFlag();
 	bool GetEnemyHitFlag(int);
@@ -63,6 +65,9 @@ private:
 	int enemyPointCenterX;
 	int enemyPointCenterY;
 	int enemyPointRadius;
+
+	bool enemyDradFlag[20];
+	bool playerDeadFlag;
 	
 	int playerBulletPointCenterX[70];
 	int playerBulletPointCenterY[70];

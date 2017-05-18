@@ -19,14 +19,14 @@ void CharacterTask::Initialize() {
 	mSoundPlayFlag = 0;
 	cntBulletTime = 0;
 	interval = 3;
-	x = 0;
-	y = 0;
+	x = 300;
+	y = 600;
 }
 
 void CharacterTask::Update() {
 	ControlGameInstance::GetInstance()->SetPlayerPointX(this->x);
 	ControlGameInstance::GetInstance()->SetPlayerPointY(this->y);
-	ControlGameInstance::GetInstance()->SetPlayerHitAria(x + 20, y + 30, 5);
+	ControlGameInstance::GetInstance()->SetPlayerHitAria(x + 20, y + 30, 4);
 
 }
 

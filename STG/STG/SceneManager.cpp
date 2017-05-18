@@ -1,6 +1,6 @@
 #include "SceneManager.h"
 #include "DxLib.h"
-#include "Config.h"
+#include "SceneGameclear.h"
 #include "Game.h"
 #include "Title.h"
 #include "SceneMenu.h"
@@ -45,7 +45,7 @@ void SceneManager::Update() {
 			break;
 
 		case eScene_Config:
-			mScene = (IScene*) new Config(this);
+			//mScene = (IScene*) new Config(this);
 			break;
 
 		case eScene_Title:
@@ -53,7 +53,7 @@ void SceneManager::Update() {
 			break;
 
 		case eScene_GameClear:
-			mScene = (IScene*) new Result(this);
+			mScene = (IScene*) new Gameclear(this);
 			break;
 		}
 
