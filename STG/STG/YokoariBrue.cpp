@@ -19,7 +19,8 @@ void YokoariBrue::Initialize() {
 	CharacterTask::Initialize();
 	i = 0;
 	for (int k = 0; k < 70; k++) {
-		mBullet[k] = NULL;
+			mBullet[k] = NULL;
+			playerHitFlag[k] = false;
 	}
 	mCharaGraphicHandle[0] = LoadGraph(PLAYER_PIC);
 
@@ -77,14 +78,20 @@ void YokoariBrue::MoveScript(int transfer) {
 }
 
 void YokoariBrue::ShotUpdate() {
-
 	for (int j = 0; j < 70; j++) {
-		if (mBullet[j] != 0) {
-			mBullet[j]->Update();
-		
+		ControlGameInstance::GetInstance()->SetPlayerBulletId(j);
+		if (mBullet[j] != NULL) {
+			if (ControlGameInstance::GetInstance()->GetEnemyHitFlag(j) == false) {
+				mBullet[j]->Update();
+			}
+			else {
+				mBullet[j]->Finalize();
+				delete mBullet[j];
+				mBullet[j] = NULL;
+				ControlGameInstance::GetInstance()->SetEnemyHitFlag(j, false);
+			}
 		}
 	}
-
 	cntBulletTime++;
 
 	ShotFlg = cntBulletTime > interval ? true : false;
@@ -95,20 +102,17 @@ void YokoariBrue::ShotUpdate() {
 		mBullet[i]->Initialize();
 
 		if (mBullet[i]->GetBulletPointY() <= 0) {
-			mBullet[i]->Finalize();
 			delete mBullet[i];
 			mBullet[i] = NULL;
 		}
-
 		i++;
 		if (i == 70) i = 0;
 		cntBulletTime = 0;
 	}
-
 }
 
 void YokoariBrue::ShotRender() {
-
+	
 	for (int j = 0; j < 70; j++) {
 		if (mBullet[j] != 0) {
 			mBullet[j]->Render();

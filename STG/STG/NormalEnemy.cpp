@@ -10,9 +10,10 @@
 #define MOVING_POINT_Y 2
 #define NORMAL_ENEMY_PIC "Image/EnemyUI/enemy‚Q.png"
 
-NormalEnemy::NormalEnemy(int y) {
+NormalEnemy::NormalEnemy(int id, int y) {
 	moveY = y;
 	endShotFlag = false;
+	thisId = id;
 }
 
 
@@ -32,12 +33,19 @@ void NormalEnemy::Update() {
 	ControlGameInstance::GetInstance()->SetNewbeiEnemyPointX(this->x);
 	ControlGameInstance::GetInstance()->SetNewbeiEnemyPointY(this->y);
 	ShotUpdate();
-	ControlGameInstance::GetInstance()->SetPlayerBulletHitAria(x + 5, y + 5, 5);
-	if (ControlGameInstance::GetInstance()->PlayerBulletToEnemyHitTest() == true) {
-		DrawString(0, 0, "hitP", GetColor(255, 255, 255));
-
-	}
-}
+	ControlGameInstance::GetInstance()->SetEnemyHitAria(x + 15, y + 23, 13);
+	for (int j = 0; j < 70; j++) {
+		if (ControlGameInstance::GetInstance()->PlayerBulletToEnemyHitTest(j) == true) {
+			DrawString(0, 0, "hitP", GetColor(255, 255, 255));
+			//hitTest.SetEnemyNumber(thisId);
+			//ControlGameInstance::GetInstance()->SetEnemyHitFlag(thisId , j, true);
+		}
+		else {
+			//ControlGameInstance::GetInstance()->SetEnemyHitFlag(thisId, j, false);
+		}
+	}	
+	
+ }
 
 void NormalEnemy::Render() {
 	DrawExtendGraph(x, y, x + 30, y + 46, mCharaGraphicHandle[0], TRUE);

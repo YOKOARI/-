@@ -3,12 +3,12 @@
 #include <stdlib.h>
 
 CharacterManager::CharacterManager(){
-	iCharacter[0] = ControlGameInstance::GetInstance()->GetCharacterId() == e_YokoariBrue ? (ICharacter*) new YokoariBrue : (ICharacter*) new YokoariRed;
+	iCharacter[11] = ControlGameInstance::GetInstance()->GetCharacterId() == e_YokoariBrue ? (ICharacter*) new YokoariBrue : (ICharacter*) new YokoariRed;
 	//iCharacter[1] = new NormalEnemy(100);
-	for (int i = 1; i < 12; i++) {
+	for (int i = 0; i < 11; i++) {
 		iCharacter[i] = 0;
 		if (iCharacter[i] == 0) {
-			iCharacter[i] = (ICharacter*) new NormalEnemy(rand() % 300 + 60);
+			iCharacter[i] = (ICharacter*) new NormalEnemy(i,rand() % 300 + 60);
 		}
 	}
 	

@@ -2,13 +2,11 @@
 
 
 
-ControlGameInstance::ControlGameInstance()
-{
+ControlGameInstance::ControlGameInstance() {
 }
 
 
-ControlGameInstance::~ControlGameInstance()
-{
+ControlGameInstance::~ControlGameInstance() {
 }
 
 ControlGameInstance* ControlGameInstance::GetInstance() {
@@ -41,6 +39,10 @@ void ControlGameInstance::SetStageId(int stageId) {
 	StageSelectId = stageId;
 }
 
+void ControlGameInstance::SetPlayerBulletId(int bulletID) {
+	bulletId = bulletID;
+}
+
 void ControlGameInstance::SetPlayerHitAria(int cx, int cy, int cr) {
 	playerPointCenterX = cx;
 	playerPointCenterY = cy;
@@ -53,9 +55,9 @@ void ControlGameInstance::SetEnemyHitAria(int cx, int cy, int cr) {
 	enemyPointRadius = cr;
 }
 
-void ControlGameInstance::SetPlayerBulletHitAria(int cx, int cy, int cr) {
-	playerBulletPointCenterX = cx;
-	playerBulletPointCenterY = cy;
+void ControlGameInstance::SetPlayerBulletHitAria(int id, int cx, int cy, int cr) {
+	playerBulletPointCenterX[id] = cx;
+	playerBulletPointCenterY[id] = cy;
 	playerBulletPointRadius = cr;
 }
 
@@ -65,11 +67,25 @@ void ControlGameInstance::SetEnemyBulletHitAria(int cx, int cy, int cr) {
 	enemyBulletPointRadius = cr;
 }
 
+void ControlGameInstance::SetCurrentBulletNumber(int number) {
+	currentNumber = number;
+}
 
+//’e‚ª“–‚½‚Á‚½“G‚ÌID‚ðŠi”[
+void ControlGameInstance::SetEnemyHitFlag(int playerBulletId,bool flag) {
+	enemyHitFlag[playerBulletId] = flag;
+}
 
+int ControlGameInstance::GetBulletId() {
+	return bulletId;
+}
 
 int ControlGameInstance::GetPlayerPointX() {
 	return playerPointX;
+}
+
+int ControlGameInstance::GetCurrentBulletNumber() {
+	return currentNumber;
 }
 
 int ControlGameInstance::GetPlayerPointY() {
@@ -94,8 +110,15 @@ int ControlGameInstance::GetStageId() {
 	return StageSelectId;
 }
 
-bool ControlGameInstance::GetPlayerDeadFlag() {
-	return playerDeadFlag;
+bool ControlGameInstance::GetPlayerHitFlag() {
+	return playerHitFlag;
+}
+
+//’e‚ª“–‚½‚Á‚½“G‚ÌID‚ðŽæ“¾
+bool ControlGameInstance::GetEnemyHitFlag(int playerBulletNumber) {
+	int flg = enemyHitFlag[playerBulletNumber];
+	enemyHitFlag[playerBulletNumber] = false;
+	return flg;
 }
 
 bool ControlGameInstance::EnemyBulletToPlayerHitTest() {
@@ -105,24 +128,26 @@ bool ControlGameInstance::EnemyBulletToPlayerHitTest() {
 
 	
 	if (rLength * rLength >= (xLength * xLength) + (yLength * yLength)) {
-		playerDeadFlag = true;
+		playerHitFlag = true;
 		return true;
 	}
 	else {
-		playerDeadFlag = false;
+		playerHitFlag = false;
 		return	false;
 	}
 }
 
-bool ControlGameInstance::PlayerBulletToEnemyHitTest() {
-	int xLength = playerBulletPointCenterX - enemyPointCenterX;
-	int yLength = playerBulletPointCenterY - enemyPointCenterY;
+bool ControlGameInstance::PlayerBulletToEnemyHitTest(int playerBulletID) {
+	int xLength = playerBulletPointCenterX[playerBulletID] - enemyPointCenterX;
+	int yLength = playerBulletPointCenterY[playerBulletID] - enemyPointCenterY;
 	int rLength = playerBulletPointRadius + enemyPointRadius;
 
 	if (rLength * rLength >= (xLength * xLength) + (yLength * yLength)) {
+		SetEnemyHitFlag(playerBulletID, true);
 		return true;
 	}
 	else {
+		SetEnemyHitFlag(playerBulletID,false);
 		return	false;
 	}
 }

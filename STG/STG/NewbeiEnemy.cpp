@@ -41,6 +41,7 @@ void NewbeiEnemy::Update() {
 	ControlGameInstance::GetInstance()->SetNewbeiEnemyPointY(this->y);
 	ShotUpdate();;
 	ControlGameInstance::GetInstance()->SetEnemyHitAria(x + 15, y + 23, 15);
+
 }
 
 void NewbeiEnemy::Render() {

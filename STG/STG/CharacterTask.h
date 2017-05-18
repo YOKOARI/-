@@ -17,9 +17,11 @@ protected:
 	int height;
 	int center;
 	int interval;
+	int mId;
 	int cntBulletTime;
 	bool ShotFlg;
 	int hp;
+	bool playerHitFlag[70];
 
 	virtual void Initialize() override;
 	virtual void Update() override;

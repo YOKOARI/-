@@ -22,6 +22,8 @@ void PlayerBullet::Initialize() {
 }
 
 void PlayerBullet::Update() {
+
+
 	if (ControlGameInstance::GetInstance()->GetCharacterId() == e_YokoariBrue) {
 		y -= 10;
 	}
@@ -37,11 +39,8 @@ void PlayerBullet::Update() {
 			shotVectorFlg = 0;
 		}
 	}
-	ControlGameInstance::GetInstance()->SetPlayerBulletHitAria(x + 5, y + 5, 5);
-	if (ControlGameInstance::GetInstance()->PlayerBulletToEnemyHitTest() == true) {
-		DrawString(0, 0, "hitP", GetColor(255, 255, 255));
-
-	}
+		ControlGameInstance::GetInstance()->SetPlayerBulletHitAria(ControlGameInstance::GetInstance()->GetBulletId(), x + 5, y + 5, 5);
+	
 }
 
 void PlayerBullet::Render() {
@@ -49,6 +48,11 @@ void PlayerBullet::Render() {
 }
 
 void PlayerBullet::Finalize() {
-	InitGraph();
+	x = -3000;
+	y = -3000;
 }
 
+
+int PlayerBullet::GetBulletPointY() {
+	return y;
+}

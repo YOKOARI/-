@@ -1,9 +1,11 @@
 #pragma once
 #include "IBullet.h"
 #include "CharacterTask.h"
+#include "HitTest.h"
+
 class NormalEnemy : public CharacterTask {
 public:
-	NormalEnemy(int y);
+	NormalEnemy(int id,int y);
 	~NormalEnemy();
 
 	virtual void Initialize() override;
@@ -17,7 +19,9 @@ private:
 	int moveX;
 	int moveY;
 	int i;
+	int thisId;
 	IBullet* mBullet;
+	HitTest hitTest;
 	void ShotUpdate();
 	void ShotRender();
 	

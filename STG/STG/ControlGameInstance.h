@@ -19,11 +19,15 @@ public:
 	void SetNewbeiEnemyPointY(int PointY);
 
 	void SetCharacterId(int charaId);
-	void SetStageId(int stageId);
+	void SetStageId(int stageId); 
+	void SetPlayerBulletId(int bulletId);
 	void SetEnemyHitAria(int cx, int cy, int cr);
 	void SetPlayerHitAria(int cx, int cy, int cr);
-	void SetEnemyBulletHitAria(int cx, int cy, int cr);
-	void SetPlayerBulletHitAria(int cx, int cy, int cr);
+	void SetEnemyBulletHitAria(int id, int cx, int cy, int cr);
+	void SetPlayerBulletHitAria(int id, int cx, int cy, int cr);
+	void SetCurrentBulletNumber(int);
+
+	void SetEnemyHitFlag(int,bool);
 
 	int GetPlayerPointX();
 	int GetPlayerPointY();
@@ -31,17 +35,21 @@ public:
 	int GetNewbeiEnemyPointY();
 	int GetCharacterId();
 	int GetStageId();
+	int GetBulletId();
+	int GetCurrentBulletNumber();
 
-	bool GetPlayerDeadFlag();
-	
-	
+
+	bool GetPlayerHitFlag();
+	bool GetEnemyHitFlag(int);
+
 	bool EnemyBulletToPlayerHitTest();
-	bool PlayerBulletToEnemyHitTest();
+	bool PlayerBulletToEnemyHitTest(int playerBulletID);
 
 private:
 	ControlGameInstance();
 	int characterId;	//キャラクターのID
 	int StageSelectId;		//ステージのID
+	int bulletId;
 
 	int playerPointX;
 	int playerPointY;
@@ -56,15 +64,16 @@ private:
 	int enemyPointCenterY;
 	int enemyPointRadius;
 	
-	int playerBulletPointCenterX;
-	int playerBulletPointCenterY;
+	int playerBulletPointCenterX[70];
+	int playerBulletPointCenterY[70];
 	int playerBulletPointRadius;
 
 	int enemyBulletPointCenterX;
 	int enemyBulletPointCenterY;
 	int enemyBulletPointRadius;
 
-	bool playerDeadFlag = false;
-	bool enemyDeadFlag = false;
+	bool playerHitFlag;
+	bool enemyHitFlag[70];	//プレイヤーの弾が敵に当たったかどうかのフラグ
+	int currentNumber;
 };
 #endif // !_CONTRIL_H_
