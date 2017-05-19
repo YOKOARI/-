@@ -16,7 +16,7 @@
 
 #define SELECT_SE LoadSoundMem("Sound/cursor1.mp3")
 #define DECISION_SE LoadSoundMem("Sound/CharaDecision.mp3")
-
+#define THIS_BGM LoadSoundMem("Sound/SELECT.mp3")
 
 SelectCharaMenu::SelectCharaMenu(ISceneChanger* changer) :SceneTask(changer) {
 }
@@ -29,6 +29,8 @@ void SelectCharaMenu::Init() {
 
 	//フラグの初期化
 	charaSelect = true;
+
+	mSoundPlayHandle = THIS_BGM;
 
 	//ヨコアリ君の状態を初期化(棒立ち)
 	flgBlue = 0;
