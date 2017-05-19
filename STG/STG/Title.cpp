@@ -6,6 +6,7 @@
 #define NOMAL_FONT_SIZE 40  //選択されているときのフォントサイズ
 #define BIG_FONT_SIZE 52    //選択されてないいときのフォントサイズ
 
+#define TITLE_BGM LoadSoundMem("Sound/TITLE.mp3");
 #define SELECT_SE LoadSoundMem("Sound/cursor1.mp3")
 #define START_SE LoadSoundMem("Sound/GameStart.mp3")
 #define END_SE LoadSoundMem("Sound/GameEnd.mp3")
@@ -35,6 +36,8 @@ void Title::Init() {
 	ChangeFont("ニコモジ＋");
 	fontSizeStart = BIG_FONT_SIZE;
 	fontSizeEnd = NOMAL_FONT_SIZE;
+
+	mSoundPlayHandle = TITLE_BGM;
 	
 }
 
@@ -43,6 +46,8 @@ void Title::Update(){
 		mChangeScene->ChangeScene(eScene_Scene_Menu);
 		DebugManager::Instance()->RenderError(DebugManager::RenderErrorType::SucsseceLord);
 	}
+
+	SceneTask::Update();
 
 	//上下キーで選択状況の変更
 	if (CheckHitKey(KEY_INPUT_UP) != 0) {
