@@ -41,6 +41,7 @@ void NormalEnemyBullet::Update() {
 				PointX[i] = -3000;
 				PointY[i] = -3000;
 				DrawString(0, 0, "hit", GetColor(255, 255, 255));
+				ControlGameInstance::GetInstance()->SetPlayerDeadFlag(true);
 			}
 			i++;
 		}
