@@ -1,1 +1,47 @@
-﻿  STG.vcxproj -> C:\Users\nwuser.DA\Desktop\STG\Debug\STG.exe
+﻿  YokoariRed.cpp
+  YokoariBrue.cpp
+  Title.cpp
+  SystemManager.cpp
+  StageTask.cpp
+  StageManager.cpp
+  SilentSerena.cpp
+c:\users\nwuser.da\desktop\git\リポジトリ\ぽん・で・らいおん\stg\stg\silentserena.cpp(20): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\users\nwuser.da\desktop\git\リポジトリ\ぽん・で・らいおん\stg\stg\silentserena.cpp(61): warning C4244: '+=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\nwuser.da\desktop\git\リポジトリ\ぽん・で・らいおん\stg\stg\silentserena.cpp(62): warning C4244: '+=': 'double' から 'int' への変換です。データが失われる可能性があります。
+  SelectCharaMenu.cpp
+  SceneTask.cpp
+  SceneManager.cpp
+  Result.cpp
+  SceneMenu.cpp
+  SceneGameover.cpp
+  SceneGameclear.cpp
+  PlayerBullet.cpp
+c:\users\nwuser.da\desktop\git\リポジトリ\ぽん・で・らいおん\stg\stg\playerbullet.cpp(18): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  NormalEnemyBullet.cpp
+c:\users\nwuser.da\desktop\git\リポジトリ\ぽん・で・らいおん\stg\stg\normalenemybullet.cpp(20): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\users\nwuser.da\desktop\git\リポジトリ\ぽん・で・らいおん\stg\stg\normalenemybullet.cpp(37): warning C4244: '+=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\nwuser.da\desktop\git\リポジトリ\ぽん・で・らいおん\stg\stg\normalenemybullet.cpp(38): warning C4244: '+=': 'double' から 'int' への変換です。データが失われる可能性があります。
+  NormalEnemy.cpp
+  NewbeiEnemyBullet.cpp
+c:\users\nwuser.da\desktop\git\リポジトリ\ぽん・で・らいおん\stg\stg\newbeienemybullet.cpp(16): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  NewbeiEnemy.cpp
+  Main.cpp
+  コードを生成中...
+c:\users\nwuser.da\desktop\git\リポジトリ\ぽん・で・らいおん\stg\stg\newbeienemybullet.cpp(62): warning C4715: 'NewbeiEnemyBullet::GetBulletPointY': 値を返さないコントロール パスがあります。
+c:\users\nwuser.da\desktop\git\リポジトリ\ぽん・で・らいおん\stg\stg\normalenemybullet.cpp(73): warning C4715: 'NormalEnemyBullet::GetBulletPointX': 値を返さないコントロール パスがあります。
+c:\users\nwuser.da\desktop\git\リポジトリ\ぽん・で・らいおん\stg\stg\normalenemybullet.cpp(87): warning C4715: 'NormalEnemyBullet::GetBulletPointY': 値を返さないコントロール パスがあります。
+c:\users\nwuser.da\desktop\git\リポジトリ\ぽん・で・らいおん\stg\stg\stagetask.cpp(57): warning C4715: 'StageTask::Finalize': 値を返さないコントロール パスがあります。
+  コンパイル中...
+  HitTest.cpp
+  Game.cpp
+  FirstStage.cpp
+  FirstBossEnemy.cpp
+  DebugManager.cpp
+  ControlGameInstance.cpp
+  Config.cpp
+  CharacterTask.cpp
+  CharacterManager.cpp
+  BulletTask.cpp
+  BossEnemy.cpp
+  コードを生成中...
+  STG.vcxproj -> C:\Users\nwuser.DA\Desktop\Git\リポジトリ\ぽん・で・らいおん\STG\Debug\STG.exe

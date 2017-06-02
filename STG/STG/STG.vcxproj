@@ -19,32 +19,74 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BossEnemy.cpp" />
+    <ClCompile Include="BulletTask.cpp" />
+    <ClCompile Include="CharacterManager.cpp" />
+    <ClCompile Include="CharacterTask.cpp" />
     <ClCompile Include="Config.cpp" />
+    <ClCompile Include="ControlGameInstance.cpp" />
     <ClCompile Include="DebugManager.cpp" />
+    <ClCompile Include="FirstBossEnemy.cpp" />
+    <ClCompile Include="FirstStage.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="ISceneChanger.cpp" />
+    <ClCompile Include="HitTest.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="NewbeiEnemy.cpp" />
+    <ClCompile Include="NewbeiEnemyBullet.cpp" />
+    <ClCompile Include="NormalEnemy.cpp" />
+    <ClCompile Include="NormalEnemyBullet.cpp" />
+    <ClCompile Include="PlayerBullet.cpp" />
+    <ClCompile Include="SceneGameclear.cpp" />
+    <ClCompile Include="SceneGameover.cpp" />
     <ClCompile Include="SceneMenu.cpp" />
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SceneTask.cpp" />
     <ClCompile Include="SelectCharaMenu.cpp" />
+    <ClCompile Include="SilentSerena.cpp" />
+    <ClCompile Include="StageManager.cpp" />
+    <ClCompile Include="StageTask.cpp" />
     <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="YokoariBrue.cpp" />
+    <ClCompile Include="YokoariRed.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BossEnemy.h" />
+    <ClInclude Include="BulletTask.h" />
+    <ClInclude Include="CharacterManager.h" />
+    <ClInclude Include="CharacterTask.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="ControlGameInstance.h" />
     <ClInclude Include="DebugManager.h" />
+    <ClInclude Include="FirstBossEnemy.h" />
+    <ClInclude Include="FirstStage.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="HitTest.h" />
+    <ClInclude Include="IBullet.h" />
+    <ClInclude Include="ICharacter.h" />
     <ClInclude Include="IScene.h" />
     <ClInclude Include="ISceneChanger.h" />
+    <ClInclude Include="IStage.h" />
+    <ClInclude Include="NewbeiEnemy.h" />
+    <ClInclude Include="NewbeiEnemyBullet.h" />
+    <ClInclude Include="NormalEnemy.h" />
+    <ClInclude Include="NormalEnemyBullet.h" />
+    <ClInclude Include="PlayerBullet.h" />
+    <ClInclude Include="SceneGameclear.h" />
+    <ClInclude Include="SceneGameover.h" />
     <ClInclude Include="SceneMenu.h" />
     <ClInclude Include="Result.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SceneTask.h" />
     <ClInclude Include="SelectCharaMenu.h" />
+    <ClInclude Include="SilentSerena.h" />
+    <ClInclude Include="StageManager.h" />
+    <ClInclude Include="StageTask.h" />
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="YokoariBrue.h" />
+    <ClInclude Include="YokoariRed.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Log.txt" />

@@ -3,7 +3,7 @@
 #include "PlayerBullet.h"
 #include "ControlGameInstance.h"
 
-#define PLAYER_PIC "Image/sample.png"
+#define PLAYER_PIC "Image/PlayerUI/YokoariRed.png"
 
 
 YokoariRed::YokoariRed() {
@@ -20,6 +20,7 @@ void YokoariRed::Initialize() {
 	i = 0;
 	for (int k = 0; k < 70; k++) {
 		mBullet[k] = NULL;
+		playerHitFlag[k] = false;
 	}
 	mCharaGraphicHandle[0] = LoadGraph(PLAYER_PIC);
 
@@ -37,7 +38,7 @@ void YokoariRed::Render() {
 
 	ShotRender();
 
-	DrawExtendGraph(x, y, x + 10, y + 15, mCharaGraphicHandle[0], TRUE);
+	DrawExtendGraph(x, y, x + 40, y + 60, mCharaGraphicHandle[0], TRUE);
 }
 
 void YokoariRed::Finalize() {
@@ -79,11 +80,19 @@ void YokoariRed::MoveScript(int transfer) {
 void YokoariRed::ShotUpdate() {
 
 	for (int j = 0; j < 70; j++) {
-		if (mBullet[j] != 0) {
+		ControlGameInstance::GetInstance()->SetPlayerBulletId(j);
+		if (mBullet[j] != NULL) {
+			if (ControlGameInstance::GetInstance()->GetEnemyHitFlag(j) == false) {
 			mBullet[j]->Update();
 		}
+			else {
+				mBullet[j]->Finalize();
+				delete mBullet[j];
+				mBullet[j] = NULL;
+				ControlGameInstance::GetInstance()->SetEnemyHitFlag(j, false);
+			}
+		}
 	}
-
 	cntBulletTime++;
 
 	ShotFlg = cntBulletTime > interval ? true : false;
