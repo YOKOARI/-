@@ -103,7 +103,7 @@ void SystemManager::GameIsInit() {
 	GetWindowMode(1280, 720);
 
 	//ウインドウテキストの取得
-	SetMainWindowText("新横浜物語");
+	SetMainWindowText("ヨコアリくん危機一髪");
 
 	//マウスカーソルを表示するか設定する　TRUE：表示　FALSE：非表示
 	GetMouseDispFlag();

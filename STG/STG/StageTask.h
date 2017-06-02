@@ -22,6 +22,7 @@ protected:
 	int mSoundPlayFlag = 0;
 	int spownInterval;
 	int spownCount;
+	int hp = 5;
 	bool spownFlag;
 };
 

@@ -30,6 +30,9 @@ int StageTask::Update() {
 		delete mCharacter[19];
 		mCharacter[19] = NULL;
 	}
+	if (hp == 0) {
+
+	}
 	if (mCharacter[19] == NULL) {
 		mCharacter[19] = ControlGameInstance::GetInstance()->GetCharacterId() == e_YokoariBrue ? (ICharacter*) new YokoariBrue : (ICharacter*) new YokoariRed;
 		mCharacter[19]->Initialize();
